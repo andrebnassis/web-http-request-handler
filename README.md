@@ -1,3 +1,82 @@
+# Steps
+
+1. Create React App with Typescript
+
+2. Mocking a Fake API
+(reference: https://blog.harveydelaney.com/setting-up-a-mock-api-for-your-front-end-react-project/)
+
+library: connect-api-mocker
+
+2.1 Installing connect-api-mocker + express + cors
+
+npm i --save-dev express connect-api-mocker cors
+
+2.2 Create a folder on root folder of the project. We will use the name mock-api
+
+2.3 Inside the folder, create a file called app.js
+
+```javascript
+const express = require('express');
+const apiMocker = require('connect-api-mocker');
+const cors = require('cors');
+
+const port = 9000;
+const app = express();
+app.use(cors());
+
+// '/' is the base path that will match the root of our mocked-api address.
+app.use('/', apiMocker('mock-api'));
+ 
+console.log(`Mock API Server is up and running at: http://localhost:${port}`);
+app.listen(port);
+```
+
+2.4 Create the following folders with GET.js and POST.js files, for test purpores
+```
+/mock-api
+    GET.js
+    /hello
+        /world
+            GET.js
+            /__customId__
+                GET.js
+```
+
+```
+const mockedData = {
+    "hello-world":"Mock-API is up and Running"
+}
+
+module.exports = (req, res) => {
+    return res.status(200).send(mockedData);
+}
+```
+
+On each file, put the following code.
+```
+const mockedData = {
+    "id": 0,
+    "dummy":"hello world"
+}
+
+module.exports = (req, res) => {
+    mockedData.id = req.params.customId;
+    return res.status(200).send(mockedData);
+}
+```
+PS: You can change this code to whatever you want. This content is just for teaching purposes.
+
+2.5 Running our mocked api
+
+```bash
+node mock-api/app.js
+```
+
+
+
+Then, open 'http://localhost:9000' to see our mocked response.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
