@@ -6,18 +6,20 @@ import  axios from 'axios';
 import  MockAdapter from 'axios-mock-adapter';
 
 
-afterEach(cleanup);
+afterEach(() => {    
+    jest.restoreAllMocks();
+  });
 
 describe("Test HttpRequest Form -> Submit", () => {
 
     test('when API is not running should throw a Network Error', async () => {
 
         jest.spyOn(console, 'error').mockImplementation(() => null);
-        const spyOnHandleRequest = jest.spyOn(
+        let spyOnHandleRequest = jest.spyOn(
             HttpRequestHandlerService, 'handleRequest'
         );
 
-        const handleHttpResponse = jest.fn();
+        let handleHttpResponse = jest.fn();
         const { getByText} = render(<HttpRequestForm handleHttpResponse={handleHttpResponse} />);
     
       const sendButton = getByText(/send/);
@@ -35,9 +37,6 @@ describe("Test HttpRequest Form -> Submit", () => {
       expect(handleHttpResponse.mock.calls[0]).toMatchObject([new Error("Network Error")]);
       
     })
-
-    spyOnHandleRequest.mockRestore();
-    handleHttpResponse.mockRestore();
 
     });
 
@@ -80,8 +79,6 @@ describe("Test HttpRequest Form -> Submit", () => {
       
     })
       
-    spyOnHandleRequest.mockRestore();
-    handleHttpResponse.mockRestore();
     });
 
     //To test the response mocking just the axios response based on the method that we called, we need to mock the axios itself.
@@ -110,7 +107,7 @@ describe("Test HttpRequest Form -> Submit", () => {
         });
     
         mock.restore();
-    })
+    });
 
 })
 
