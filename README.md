@@ -102,6 +102,13 @@ npm install axios
 ```
 
 
+JEST:
+
+https://kula.blog/posts/test_on_submit_in_react_testing_library/
+
+npm install axios-mock-adapter --save-dev
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

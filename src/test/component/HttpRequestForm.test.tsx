@@ -22,7 +22,7 @@ describe("Test HttpRequest Form -> Submit", () => {
       handleHttpResponse.mockClear();
       expect(handleHttpResponse.mock.calls.length).toEqual(0);
     
-      fireEvent.submit(sendButton);
+      fireEvent.click(sendButton);
       await waitFor(() => {
       
       expect(handleHttpResponse.mock.calls.length).toEqual(1);
@@ -63,7 +63,7 @@ describe("Test HttpRequest Form -> Submit", () => {
       handleHttpResponse.mockClear();
       expect(handleHttpResponse.mock.calls.length).toEqual(0);
     
-      fireEvent.submit(sendButton);
+      fireEvent.click(sendButton);
       await waitFor(() => {
       expect(spyOnHandleRequest.mock.calls.length).toEqual(1);
       expect(spyOnHandleRequest.mock.calls[0]).toEqual( [{"method": "GET", "url": "http://localhost:9000/"}]);
@@ -74,6 +74,9 @@ describe("Test HttpRequest Form -> Submit", () => {
       
       
     });
+
+    //To test the response mocking just the axios response based on the method that we called, we need to mock the axios itself.
+    //To do this, let's use a library called Axios-Mock-Adapter
 
 } )
 
