@@ -1,5 +1,16 @@
-import axios, {AxiosRequestConfig, Method} from 'axios';
+import axios, {AxiosInstance, AxiosRequestConfig, Method} from 'axios';
 import React, { useState } from 'react';
+
+const handleRequest = (requestConfig:AxiosRequestConfig, client?:AxiosInstance):Promise<any> =>{
+
+  client = client ?? axios.create();
+
+  return client(requestConfig).then(res => {
+    console.log(res.data);
+    return res.data;
+  })
+  .catch(error => {throw error});
+}
 
 const App:React.FC = () => {
 
@@ -15,18 +26,15 @@ const App:React.FC = () => {
       method:httpRequestVerb as Method
     };
    
-    const response =  axios.request(config);
-    response.then((res) => {
-      setHttpResponse(res);
-    })
-    .catch(error => {
-      setHttpResponse(error);
-  })
+    const response =  handleRequest(config);
+    response.then(data => {setHttpResponse(data)})
+    .catch(error => setHttpResponse(error));
+    
   };
 
   return (
     <div>
-     <h1>HTTP Request Handler</h1>
+     <h1>Basic HTTP Request Handler</h1>
      
      <form onSubmit={handleOnSubmit}>
      <label>HttpRequest:
