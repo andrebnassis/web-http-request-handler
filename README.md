@@ -72,9 +72,34 @@ PS: You can change this code to whatever you want. This content is just for teac
 node mock-api/app.js
 ```
 
+3. Setup to run our mock api and react app at once
 
+```
+npm i --save-dev npm-run-all
+```
+
+On package.json
+
+...
+"scripts": {
+  ...
+  "mock-api": "node ./mock-api/app.js",
+  "dev": "run-p start mock-api",
+  ...
+},
+...
+
+This will effectively run npm run start and npm run mock-api in parallel.
 
 Then, open 'http://localhost:9000' to see our mocked response.
+
+4. Create an HTTP call using axios
+
+4.1 Install axios
+
+```bash
+npm install axios
+```
 
 
 # Getting Started with Create React App
