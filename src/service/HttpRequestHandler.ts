@@ -5,7 +5,6 @@ export const handleRequest = (requestConfig:AxiosRequestConfig, client?:AxiosIns
     client = client ?? axios.create();
   
     return client(requestConfig).then(res => {
-      console.log(res.data);
       return res.data;
     })
     .catch(error => {throw error});

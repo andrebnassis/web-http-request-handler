@@ -104,7 +104,7 @@ npm install axios
 
 JEST:
 
-https://kula.blog/posts/test_on_submit_in_react_testing_library/
+https://codesandbox.io/s/3vrjmrpr05?file=/src/App.test.js
 
 npm install axios-mock-adapter --save-dev
 
