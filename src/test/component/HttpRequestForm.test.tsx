@@ -1,5 +1,4 @@
-import React from 'react';
-import { cleanup, fireEvent, render, waitFor} from '@testing-library/react';
+import { fireEvent, render, waitFor} from '@testing-library/react';
 import {HttpRequestForm} from '../../component/HttpRequestForm';
 import * as HttpRequestHandlerService from '../../service/HttpRequestHandler'
 import  axios from 'axios';
