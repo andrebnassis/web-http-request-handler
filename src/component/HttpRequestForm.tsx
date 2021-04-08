@@ -1,23 +1,39 @@
 import { AxiosRequestConfig, Method } from "axios";
 import React, { useState } from "react";
 import { handleRequest } from "../service/HttpRequestHandler";
+import { getBasePath, getRelativePath } from "../service/UrlHandler";
 
 export const HttpRequestForm:React.FC<{handleHttpResponse:(data:any) => void}> = ({handleHttpResponse}) => {
 
     const [httpRequestVerb, setHttpRequestVerb] = useState<string>("GET");
-    const [httpRequestUrl, setHttpRequestUrl] = useState<string>("http://localhost:9000/");
+    const [httpRequestUrl, setHttpRequestUrl] = useState<string>("http://localhost:9000");
     
     const handleOnSubmit = (event:any):void => {
+    
       event.preventDefault();
+
+      try{
+
+      const url = new URL(httpRequestUrl);
+      const relativePath = getRelativePath(url);
+      const basePath = getBasePath(url);
+      
       const config:AxiosRequestConfig = {
-        url:httpRequestUrl,
+        baseURL:basePath,
+        url:relativePath,
         method:httpRequestVerb as Method
       };
      
       const response =  handleRequest(config);
       response.then(data => {handleHttpResponse(data)})
       .catch(error => handleHttpResponse(error));
-      
+
+    
+  }
+  catch(e){
+    handleHttpResponse(undefined);
+  }
+    
     };
   
     return (
