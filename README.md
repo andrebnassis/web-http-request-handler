@@ -1,3 +1,5 @@
+# Project Overview
+
 This project is a simple web page to deal with http handler. 
 The goal was to handle with axios and jest. Some things that you can find here:
 
@@ -5,8 +7,8 @@ Axios:
  - Make Request using AxiosConfig 
 
 Jest:
- - Mocking axios through:
-    - Service Wrapper
+ - Mocking request through:
+    - service wrapper
     - axios itself
     - axios itself by using axios-mock-adapter
 
