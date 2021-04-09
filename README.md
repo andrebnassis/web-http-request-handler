@@ -15,6 +15,18 @@ Jest:
 Fake Server API
   - connect-api-mocker library: Running the project using a Fake API Server drived by file structure  
 
+## Published version
+
+This project is published at: [https://andrebnassis.github.io/web-http-request-handler/](https://andrebnassis.github.io/web-http-request-handler/)
+
+reference: [https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
+
+If you want to see this application in action but you don't have a Server set up to receive the API calls, I suggest you to create a public bin on RequestBin and send requests to the generated endpoint.
+
+ 1. Just enter on: [https://requestbin.com/](https://requestbin.com/)
+ 2. Click on "Create a public bin instead."
+ 3. Make a request using the 'web http request handler' application and see the results on your public bin at RequestBin.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
