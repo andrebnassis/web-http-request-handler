@@ -4,7 +4,6 @@ import { handleRequest } from "../service/HttpRequestHandler";
 import { getBasePath, getRelativePath } from "../service/UrlHandler";
 import { v4 as uuidv4 } from 'uuid';
 import { isBlank } from "../service/stringUtils";
-//https://stackoverflow.com/questions/34698905/how-can-i-clone-a-javascript-object-except-for-one-key
 
 enum HeaderElementType {
   key = "key",
@@ -22,7 +21,7 @@ export const HttpRequestForm:React.FC<{handleHttpResponse:(data:any) => void}> =
     const getHeaderObj = (data:Array<{id:string, key:string, value:string }>) => {
       const headerObj:any = {};
       data.forEach(e => {
-        if (!isBlank(e.key) && !isBlank(e.value)){
+        if (!isBlank(e.key)){
         headerObj[e.key] = e.value;
       }
       })
@@ -84,8 +83,6 @@ export const HttpRequestForm:React.FC<{handleHttpResponse:(data:any) => void}> =
       const response =  handleRequest(config);
       response.then(data => {handleHttpResponse(data)})
       .catch(error => handleHttpResponse(error));
-
-    
   }
   catch(e){
     handleHttpResponse(undefined);
@@ -133,7 +130,5 @@ export const HttpRequestForm:React.FC<{handleHttpResponse:(data:any) => void}> =
       </form>
       <br/>
       </div>
-      
     );
-  
   }

@@ -1,12 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { handleRequest} from '../../service/HttpRequestHandler'
 
-//https://stackoverflow.com/questions/56977919/how-to-mock-axios-when-passed-a-config-w-typescript
-//reference: https://stackoverflow.com/questions/51275434/cannot-get-jest-typescript-axios-test
-//reference: https://medium.com/swlh/mock-a-library-in-jest-and-typescript-a8bec189efc3
-//good article: https://www.robinwieruch.de/axios-jest
-//https://stackoverflow.com/questions/47144187/can-you-write-async-tests-that-expect-tothrow
-//https://jestjs.io/pt-BR/docs/asynchronous
 describe("http handler service", () => {
 
     test("mock axios client and retrieve success data", async () => {

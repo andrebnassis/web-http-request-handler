@@ -1,6 +1,3 @@
-//Good reference
-//https://dmitripavlutin.com/parse-url-javascript/
-
 export const getRelativePath = (url:URL):string =>{
     return `${url.pathname}${url.search}${url.hash}`;
 }

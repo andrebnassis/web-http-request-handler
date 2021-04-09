@@ -1,113 +1,17 @@
-# Steps
+This project is a simple web page to deal with http handler. 
+The goal was to handle with axios and jest. Some things that you can find here:
 
-1. Create React App with Typescript
+Axios:
+ - Make Request using AxiosConfig 
 
-2. Mocking a Fake API
-(reference: https://blog.harveydelaney.com/setting-up-a-mock-api-for-your-front-end-react-project/)
+Jest:
+ - Mocking axios through:
+    - Service Wrapper
+    - axios itself
+    - axios itself by using axios-mock-adapter
 
-library: connect-api-mocker
-
-2.1 Installing connect-api-mocker + express + cors
-
-npm i --save-dev express connect-api-mocker cors
-
-2.2 Create a folder on root folder of the project. We will use the name mock-api
-
-2.3 Inside the folder, create a file called app.js
-
-```javascript
-const express = require('express');
-const apiMocker = require('connect-api-mocker');
-const cors = require('cors');
-
-const port = 9000;
-const app = express();
-app.use(cors());
-
-// '/' is the base path that will match the root of our mocked-api address.
-app.use('/', apiMocker('mock-api'));
- 
-console.log(`Mock API Server is up and running at: http://localhost:${port}`);
-app.listen(port);
-```
-
-2.4 Create the following folders with GET.js and POST.js files, for test purpores
-```
-/mock-api
-    GET.js
-    /hello
-        /world
-            GET.js
-            /__customId__
-                GET.js
-```
-
-```
-const mockedData = {
-    "hello-world":"Mock-API is up and Running"
-}
-
-module.exports = (req, res) => {
-    return res.status(200).send(mockedData);
-}
-```
-
-On each file, put the following code.
-```
-const mockedData = {
-    "id": 0,
-    "dummy":"hello world"
-}
-
-module.exports = (req, res) => {
-    mockedData.id = req.params.customId;
-    return res.status(200).send(mockedData);
-}
-```
-PS: You can change this code to whatever you want. This content is just for teaching purposes.
-
-2.5 Running our mocked api
-
-```bash
-node mock-api/app.js
-```
-
-3. Setup to run our mock api and react app at once
-
-```
-npm i --save-dev npm-run-all
-```
-
-On package.json
-
-...
-"scripts": {
-  ...
-  "mock-api": "node ./mock-api/app.js",
-  "dev": "run-p start mock-api",
-  ...
-},
-...
-
-This will effectively run npm run start and npm run mock-api in parallel.
-
-Then, open 'http://localhost:9000' to see our mocked response.
-
-4. Create an HTTP call using axios
-
-4.1 Install axios
-
-```bash
-npm install axios
-```
-
-
-JEST:
-
-https://codesandbox.io/s/3vrjmrpr05?file=/src/App.test.js
-
-npm install axios-mock-adapter --save-dev
-
+Fake Server API
+  - connect-api-mocker library: Running the project using a Fake API Server drived by file structure  
 
 # Getting Started with Create React App
 
@@ -124,6 +28,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm run dev`
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+Runs the the Fake Api Server.\
+It will be served on [http://localhost:9000](http://localhost:9000)
 
 ### `npm test`
 
