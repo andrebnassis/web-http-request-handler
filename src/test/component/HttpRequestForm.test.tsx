@@ -70,7 +70,7 @@ describe("Test HttpRequest Form -> Submit", () => {
       fireEvent.click(sendButton);
       await waitFor(() => {
       expect(spyOnHandleRequest.mock.calls.length).toEqual(1);
-      // expect(spyOnHandleRequest.mock.calls[0]).toEqual( [{"method": "GET", "url": "http://localhost:9000/"}]);
+      expect(spyOnHandleRequest.mock.calls[0]).toMatchObject( [{"data": "", "headers": {}, "method": "GET", "baseURL": "http://localhost:9000","url": "/"}]);
       expect(handleHttpResponse.mock.calls.length).toEqual(1);
       expect(handleHttpResponse.mock.calls[0]).toMatchObject([mockedData]);
       
