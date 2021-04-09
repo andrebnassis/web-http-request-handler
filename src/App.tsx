@@ -7,10 +7,11 @@ const App:React.FC = () => {
 
   return (
     <div>
-     <h1>Basic HTTP Request Handler</h1>
-     <HttpRequestForm handleHttpResponse={setHttpResponse}/>
-     
+      <h1>Basic HTTP Request Handler</h1>
+      Repository link: <a href="https://github.com/andrebnassis/web-http-request-handler">https://github.com/andrebnassis/web-http-request-handler</a>
     <br/>
+    <br/>
+    <HttpRequestForm handleHttpResponse={setHttpResponse}/>
      <div>
      HttpResponse: {JSON.stringify(httpResponse)}
      </div>
