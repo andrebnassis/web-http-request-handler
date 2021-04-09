@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/web-http-request-handler/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/web-http-request-handler/static/js/main.1dd3309b.chunk.js",
+    "main.js.map": "/web-http-request-handler/static/js/main.1dd3309b.chunk.js.map",
+    "runtime-main.js": "/web-http-request-handler/static/js/runtime-main.d91f316f.js",
+    "runtime-main.js.map": "/web-http-request-handler/static/js/runtime-main.d91f316f.js.map",
+    "static/js/2.4d0e843b.chunk.js": "/web-http-request-handler/static/js/2.4d0e843b.chunk.js",
+    "static/js/2.4d0e843b.chunk.js.map": "/web-http-request-handler/static/js/2.4d0e843b.chunk.js.map",
+    "static/js/3.778d92e4.chunk.js": "/web-http-request-handler/static/js/3.778d92e4.chunk.js",
+    "static/js/3.778d92e4.chunk.js.map": "/web-http-request-handler/static/js/3.778d92e4.chunk.js.map",
+    "index.html": "/web-http-request-handler/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/web-http-request-handler/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.4d0e843b.chunk.js.LICENSE.txt": "/web-http-request-handler/static/js/2.4d0e843b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d91f316f.js",
+    "static/js/2.4d0e843b.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.1dd3309b.chunk.js"
+  ]
+}
