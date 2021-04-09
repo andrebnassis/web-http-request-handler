@@ -5,12 +5,39 @@ import { getBasePath, getRelativePath } from "../service/UrlHandler";
 
 //https://stackoverflow.com/questions/34698905/how-can-i-clone-a-javascript-object-except-for-one-key
 
+enum HeaderElementType {
+  key = "key",
+  value = "value"
+}
+
 export const HttpRequestForm:React.FC<{handleHttpResponse:(data:any) => void}> = ({handleHttpResponse}) => {
 
     const [httpRequestVerb, setHttpRequestVerb] = useState<string>("GET");
     const [httpRequestUrl, setHttpRequestUrl] = useState<string>("http://localhost:9000");
     const [httpRequestBody, setHttpRequestBody] = useState<string>("");
-    const [httpRequestHeader, setHttpRequestHeader] = useState<Array<{id:number, key:string, value:string }>>([]);
+    const [httpRequestHeader, setHttpRequestHeader] = useState<Array<{id:string, key:string, value:string }>>([{id:"1", key:"", value:""}]);
+
+    const setHeaderElementById = (event:any, elementType:HeaderElementType) => {
+      const id = ((event.target.parentNode) as Element).getAttribute("data-id");
+      const httpRequestHeaderArr = httpRequestHeader.map(e => {
+        if(e.id === id){
+          switch(elementType){
+            case HeaderElementType.key:
+              e.key = event.target.value;
+              break;
+            case HeaderElementType.value:
+              e.value = event.target.value;
+              break;
+            default:
+              break;
+          }
+        }
+      return e;
+      });
+      
+      setHttpRequestHeader(httpRequestHeaderArr);
+
+    }
 
     const handleOnSubmit = (event:any):void => {
     
@@ -56,6 +83,17 @@ export const HttpRequestForm:React.FC<{handleHttpResponse:(data:any) => void}> =
       </select>
       <input value={httpRequestUrl} onChange={e => setHttpRequestUrl(e.target.value)}>
       </input>
+      {
+        httpRequestHeader.map(e => {
+          console.log({e})
+          return (
+            <div data-id={e.id}>
+            <input value={e.key} onChange={e => {setHeaderElementById(e, HeaderElementType.key)} }/>
+            <input value={e.value} onChange={e => {setHeaderElementById(e, HeaderElementType.value)}} />
+            </div>
+          );
+        })
+      }
       <br/>
       <label>
         body:
